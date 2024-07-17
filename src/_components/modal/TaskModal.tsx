@@ -1,3 +1,5 @@
+import { useState, FormEvent } from 'react';
+
 // icon
 import CloseIcon from '../icons/CloseIcon';
 
@@ -7,9 +9,34 @@ import Button from '@/_components/Button';
 type Props = {
   show: boolean;
   handleCloseModal: () => void;
+  handleTaskSubmit: (formData: FormData) => void;
 };
 
-function TaskModal({ show, handleCloseModal }: Props) {
+function TaskModal({ show, handleCloseModal, handleTaskSubmit }: Props) {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsLoading(true);
+    setError(null); // Clear previous errors when a new request starts
+
+    try {
+      const formData = new FormData(event.currentTarget);
+
+      if (formData.get('task') === '') {
+        throw new Error('Please input a task!');
+      }
+
+      return handleTaskSubmit(formData);
+    } catch (error: any) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <>
       {show && (
@@ -18,16 +45,23 @@ function TaskModal({ show, handleCloseModal }: Props) {
             <div className="min-w-[356px] overflow-auto rounded-md bg-white p-6">
               <div className="flex justify-between">
                 <p className="pb-4 text-xl font-medium">Add Task</p>
-                <CloseIcon onClick={handleCloseModal} />
+                <CloseIcon onClick={() => {handleCloseModal();
+                setError(null);}} />
               </div>
-              <form>
+              <form onSubmit={onSubmit}>
                 <div className="flex gap-4">
-                  <Input placeholder="Task" />
+                  <Input
+                    placeholder="Task"
+                    name="task"
+                    errorMessage={error || ''}
+                    readOnly={isLoading}
+                  />
                   <div className="w-3/12 flex-auto">
                     <Button
                       primary
                       label="Create"
-                      onClick={() => alert('yeah')}
+                      isLoading={isLoading}
+                      onClick={() => setIsLoading(true)}
                     />
                   </div>
                 </div>

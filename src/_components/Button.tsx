@@ -4,9 +4,10 @@ type Props = {
   label: String;
   onClick: () => void;
   primary?: boolean;
+  isLoading?: boolean;
 };
 
-function Button({ label, onClick, primary }: Props) {
+function Button({ label, onClick, primary, isLoading }: Props) {
   return (
     <button
       onClick={onClick}
@@ -15,7 +16,7 @@ function Button({ label, onClick, primary }: Props) {
         'bg-gray-200 hover:bg-gray-100': !primary,
       })}
     >
-      {label}
+      {isLoading ? 'Loading...' : label}
     </button>
   );
 }
