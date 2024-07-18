@@ -5,6 +5,7 @@ export async function POST(request: Request) {
 }
 
 export async function GET(request: Request) {
-  // const tasks = await prisma.task.findMany();
-  // return Response.json({ data: tasks }, { status: 200 });
+  const tasks = await prisma.task.findMany();
+
+  return Response.json({ data: tasks }, { status: 200 });
 }
