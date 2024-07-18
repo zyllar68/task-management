@@ -5,7 +5,7 @@ type Props = {
   errorMessage?: string;
   name: string;
   readOnly?: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 function Input({
