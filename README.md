@@ -1,5 +1,9 @@
 ## Getting Started
 
+<!-- show postgres datatabase with prisma studio -->
+
+npx prisma studio
+
 First, run the development server:
 
 ```bash

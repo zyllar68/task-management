@@ -1,18 +1,16 @@
 import { useState, FormEvent } from 'react';
-
-// icon
 import CloseIcon from '../icons/CloseIcon';
-
 import Input from '@/_components/Input';
 import Button from '@/_components/Button';
 
 type Props = {
+  task: string;
   show: boolean;
   handleCloseModal: () => void;
   handleTaskSubmit: (formData: FormData) => void;
 };
 
-function TaskModal({ show, handleCloseModal, handleTaskSubmit }: Props) {
+function TaskModal({ task, show, handleCloseModal, handleTaskSubmit }: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -43,7 +41,7 @@ function TaskModal({ show, handleCloseModal, handleTaskSubmit }: Props) {
           <div className="flex w-full items-center justify-center">
             <div className="min-w-[356px] overflow-auto rounded-md bg-white p-6">
               <div className="flex justify-between">
-                <p className="pb-4 text-xl font-medium">Add Task</p>
+                <p className="pb-4 text-xl font-medium">Edit Task</p>
                 <CloseIcon
                   onClick={() => {
                     handleCloseModal();
@@ -54,6 +52,7 @@ function TaskModal({ show, handleCloseModal, handleTaskSubmit }: Props) {
               <form onSubmit={onSubmit}>
                 <div className="flex gap-4">
                   <Input
+                    defaultValue={task}
                     placeholder="Task"
                     name="task"
                     errorMessage={error || ''}
@@ -62,7 +61,7 @@ function TaskModal({ show, handleCloseModal, handleTaskSubmit }: Props) {
                   <div className="w-3/12 flex-auto">
                     <Button
                       primary
-                      label="Create"
+                      label="Update"
                       isLoading={isLoading}
                       onClick={() => setIsLoading(true)}
                     />

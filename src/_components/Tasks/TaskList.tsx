@@ -19,6 +19,7 @@ function TaskList({ taskList, handleDeleteIcon, handleEdit }: Props) {
           return (
             <TaskItem
               key={item.id}
+              id={item.id}
               task={item.task}
               handleEdit={handleEdit}
               handleDeleteIcon={handleDeleteIcon}
