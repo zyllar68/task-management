@@ -14,7 +14,7 @@ function TaskList({ taskList, handleDeleteIcon, handleEdit }: Props) {
   return (
     <>
       <h1 className="pb-4 text-center text-2xl font-medium">Task List</h1>
-      <ul>
+      <ul className="h-[calc(100vh-450px)] overflow-auto">
         {taskList.map((item) => {
           return (
             <TaskItem
