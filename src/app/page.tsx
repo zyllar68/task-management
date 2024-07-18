@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Input from '@/_components/Input';
 import TaskList from '@/_components/Tasks/TaskList';
@@ -53,6 +53,14 @@ export default function Home() {
       setTaskModal(false);
     }
   };
+
+  useEffect(() => {
+    fetch('https://task-management-pi-roan.vercel.app/api/task')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
 
   return (
     <>
