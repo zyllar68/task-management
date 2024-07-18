@@ -54,13 +54,13 @@ export default function Home() {
     }
   };
 
-  // useEffect(() => {
-  //   fetch('https://task-management-pi-roan.vercel.app/api/task')
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch('https://task-management-pi-roan.vercel.app/api/task')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
 
   return (
     <>
