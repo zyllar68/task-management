@@ -23,7 +23,7 @@ export async function GET(req: Request) {
       where: {
         task: {
           contains: searchQuery,
-          mode: 'insensitive', // this mode makes the search case-insensitive
+          mode: 'insensitive',
         },
       },
       orderBy: { id: 'desc' },

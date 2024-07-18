@@ -21,7 +21,7 @@ function Input({
     <div className="flex flex-col">
       {label && <label className="text-lg">{label}</label>}
       <input
-        className="w-full rounded-md border-2 border-black px-2 py-4"
+        className="w-full min-w-[143px] rounded-md border-2 border-black px-2 py-4"
         defaultValue={defaultValue}
         name={name}
         placeholder={placeholder}

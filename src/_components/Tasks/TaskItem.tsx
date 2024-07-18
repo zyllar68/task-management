@@ -19,13 +19,14 @@ function TaskItem({ id, task, handleDeleteIcon, handleEdit }: Props) {
   };
 
   return (
-    <li className="mb-6 flex items-center justify-between rounded-lg bg-white px-4 py-6 capitalize">
-      <div className="w-10/12 flex-auto">
-        <p className="max-w-[] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-medium">
+    <li className="mb-6 w-full min-w-[143px] rounded-lg bg-white px-4 py-6 capitalize sm:flex sm:items-center sm:justify-between">
+      <div className="sm:w-10/12 sm:flex-auto">
+        <p className="overflow-hidden text-ellipsis whitespace-nowrap text-lg font-medium">
           {task}
         </p>
       </div>
-      <div className="flex w-2/12 flex-auto justify-end gap-6">
+      <hr className="sm:hidden" />
+      <div className="mt-4 flex flex-auto justify-center gap-6 sm:mt-0 sm:w-2/12 sm:justify-end">
         <PenIcon onClick={onEditClick} />
         <TrashIcon onClick={onDeleteClick} />
       </div>
@@ -34,3 +35,15 @@ function TaskItem({ id, task, handleDeleteIcon, handleEdit }: Props) {
 }
 
 export default TaskItem;
+
+// <li className="mb-6 flex w-full min-w-[143px] flex-col items-center justify-between rounded-lg bg-white px-4 py-6 capitalize">
+//   <div className="w-10/12 flex-auto">
+//     <p className="overflow-hidden text-ellipsis whitespace-nowrap text-lg font-medium">
+//       {task}
+//     </p>
+//   </div>
+//   <div className="flex w-2/12 flex-auto justify-end gap-6">
+//     <PenIcon onClick={onEditClick} />
+//     <TrashIcon onClick={onDeleteClick} />
+//   </div>
+// </li>;

@@ -168,15 +168,15 @@ export default function Home() {
         </div>
 
         <div className="mx-auto max-w-[768px] px-10 pt-40">
-          <div className="flex items-center gap-8 pb-20">
-            <div className="w-9/12 flex-auto">
+          <div className="flex flex-col items-center gap-8 pb-20 sm:flex-row">
+            <div className="flex-auto sm:w-9/12">
               <Input
                 placeholder="Search"
                 name="search"
                 onChange={handleSearchChange}
               />
             </div>
-            <div className="w-3/12 flex-auto">
+            <div className="flex-auto sm:w-3/12">
               <Button primary label="Add Task" onClick={handleModal} />
             </div>
           </div>
