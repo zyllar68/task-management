@@ -39,7 +39,7 @@ function TaskModal({ task, show, handleCloseModal, handleTaskSubmit }: Props) {
       {show && (
         <div className="z-1 absolute left-0 top-0 flex h-screen w-screen bg-gray-300 bg-opacity-50">
           <div className="flex w-full items-center justify-center">
-            <div className="min-w-[356px] overflow-auto rounded-md bg-white p-6">
+            <div className="overflow-auto rounded-md bg-white p-6 sm:min-w-[356px]">
               <div className="flex justify-between">
                 <p className="pb-4 text-xl font-medium">Edit Task</p>
                 <CloseIcon
@@ -50,7 +50,7 @@ function TaskModal({ task, show, handleCloseModal, handleTaskSubmit }: Props) {
                 />
               </div>
               <form onSubmit={onSubmit}>
-                <div className="flex gap-4">
+                <div className="sm:flex sm:gap-4">
                   <Input
                     defaultValue={task}
                     placeholder="Task"
@@ -58,7 +58,7 @@ function TaskModal({ task, show, handleCloseModal, handleTaskSubmit }: Props) {
                     errorMessage={error || ''}
                     readOnly={isLoading}
                   />
-                  <div className="w-3/12 flex-auto">
+                  <div className="mt-6 sm:mt-0 sm:w-3/12 sm:flex-auto">
                     <Button
                       primary
                       label="Update"
